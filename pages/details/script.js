@@ -18,7 +18,6 @@ if (window.location.search) {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${authorizationToken}`,
-                    'Content-Type': 'application/json',
                 },
             });
 

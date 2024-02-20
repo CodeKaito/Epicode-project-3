@@ -6,6 +6,8 @@ import { authorizationToken } from "/index.js";
 // Variabili globali
 let homepage = document.getElementById('homepage');
 
+let deleteButton = document.getElementById('delete-button');
+
 // Function per fare il fetching principale dell'api
 async function fetchData() {
     try {
@@ -16,6 +18,7 @@ async function fetchData() {
         });
 
         let data = await response.json();
+        console.log(data);
         createTemplate(data);
 
     } catch (error) {
@@ -59,12 +62,22 @@ let createTemplate = (data) => {
 
         let cardBodyButton = document.createElement('a');
         cardBodyButton.href = `./pages/details/index.html?q=${_id}`;
-        cardBodyButton.classList.add('btn', 'btn-primary');
+        cardBodyButton.classList.add('btn', 'btn-primary', 'ms-2');
         cardBodyButton.innerText = 'Details';
+
+        let cardBodyDeleteButton = document.createElement('button');
+        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button'); // Modifica l'ID in una classe
+        cardBodyDeleteButton.innerText = 'Delete';
+
+
+        cardBodyDeleteButton.addEventListener('click', () => {
+            deleteData(_id);
+        });
 
         // Aggiungi gli elementi correttamente
         divCardBody.appendChild(cardBodyTitle);
         divCardBody.appendChild(cardBodyParagraph);
+        divCardBody.appendChild(cardBodyDeleteButton);
         divCardBody.appendChild(cardBodyButton);
 
         divCard.appendChild(imgCard);
@@ -76,6 +89,31 @@ let createTemplate = (data) => {
         homepage.appendChild(divCol);
     });
 };
+
+// Funzione per eliminare un dato
+async function deleteData(itemId) {
+    try {
+      const response = await fetch(`${apiUrl}/${itemId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${authorizationToken}`
+        },
+      });
+  
+      // Controlla se la risposta è nel range 200-299 (successo)
+      if (response.ok) {
+        console.log('Dato eliminato con successo');
+        // Puoi richiamare la funzione fetchData per aggiornare la visualizzazione dopo l'eliminazione
+        fetchData();
+        location.reload();
+      } else {
+        // Se la risposta non è nel range 200-299, lancia un errore
+        throw new Error(`Errore nella chiamata API: ${response.status} - ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error('Errore durante la chiamata API:', error.message);
+    }
+}
 
 // Chiamata api al reload della pagina
 window.onload = () => {

@@ -32,7 +32,6 @@ async function fetchData() {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${authorizationToken}`,
-                'Content-Type': 'application/json',
             },
             body: JSON.stringify(postData),
         });
