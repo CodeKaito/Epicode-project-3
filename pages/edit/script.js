@@ -33,7 +33,7 @@ async function patchData() {
 
     try {
         let response = await fetch(`${apiUrl}/${itemIdToUpdate}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${authorizationToken}`,
                 'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ async function loadData() {
 
         let data = await response.json();
 
-        // Popola gli input con i dati ottenuti
+        // Popolo gli input con i dati della card, di modo che l'update sia piú veloce
         productTitle.value = data.name;
         productDesc.value = data.description;
         productBrand.value = data.brand;
@@ -77,4 +77,3 @@ async function loadData() {
 window.onload = loadData;
 
 patchBtn.addEventListener('click', patchData);
-
