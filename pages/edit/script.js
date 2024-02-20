@@ -42,8 +42,9 @@ async function patchData() {
         });
 
         let data = await response.json();
-
         console.log('Dati aggiornati con successo:', data);
+
+        window.location.href = window.location.pathname.replace("details/index.html", "index.html");
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
     }

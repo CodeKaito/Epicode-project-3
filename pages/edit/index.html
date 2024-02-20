@@ -73,12 +73,30 @@
                         <label for="productPrice" class="form-label">Price of the product</label>
                         <div class="productPrice-container">
                             <span class="dollar-sign">$</span>
-                            <input type="number" class="form-control priceInput" id="productPrice" name="price" step="0.01" required>
+                            <input type="number" class="form-control priceInput" id="productPrice" name="price"
+                                step="0.01" required>
                         </div>
                         <div class="form-text">Enter the price of your product.</div>
                     </div>
                     <button type="reset" class="btn btn-danger">Clear Fields</button>
                     <button type="submit" class="btn btn-primary" id="patchBtn">Edit Product</button>
+                    <div class="toast-container position-fixed bottom-0 start-0 p-6">
+                        <div class="toast" id="alertSuccessful" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-body">
+                                <div class="d-flex gap-4">
+                                    <span><i class="fa-solid fa-circle-check fa-lg icon-success"></i></span>
+                                    <div class="d-flex flex-column flex-grow-1 gap-2">
+                                        <div class="d-flex align-items-center">
+                                            <span class="fw-semibold">#1 Your changes were saved</span>
+                                            <button type="button" class="btn-close btn-close-sm ms-auto"
+                                                data-bs-dismiss="toast" aria-label="Close"></button>
+                                        </div>
+                                        <span>I will auto dismiss after 8 seconds.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </section>
