@@ -38,16 +38,44 @@ if (window.location.search) {
 }
 
 let showDetails = ({ name, description, price, brand, imageUrl }) => {
-    let detailsHtml = `
-        <div class="card details">
-            <img src="${imageUrl}" alt="${name}" class="card-img-top" />
-            <div class="card-body">
-                <h1>${name}</h1>
-                <p>Price: ${price}</p>
-                <p>Description: ${description}</p>
-                <p>Category: ${brand}</p>
-            </div>
-        </div>
-    `;
-    detailsContainer.innerHTML = detailsHtml;
+
+    let divCol = document.createElement('div');
+    divCol.classList.add('col-md-3');
+
+    let divCard = document.createElement('div');
+    divCard.classList.add('card', 'details');
+
+    let imgCard = document.createElement('img');
+    imgCard.src = imageUrl;
+    imgCard.alt = name;
+    imgCard.classList.add('card-img-top');
+
+    let divCardBody = document.createElement('div');
+    divCardBody.classList.add('card-body');
+
+    let title = document.createElement('h5');
+    title.innerText = name;
+
+    let priceParagraph = document.createElement('p');
+    priceParagraph.innerText = `Price: ${price}`;
+
+    let descriptionParagraph = document.createElement('p');
+    descriptionParagraph.innerText = `Description: ${description}`;
+
+    let brandParagraph = document.createElement('p');
+    brandParagraph.innerText = `Brand: ${brand}`;
+
+    divCardBody.appendChild(title);
+    divCardBody.appendChild(priceParagraph);
+    divCardBody.appendChild(descriptionParagraph);
+    divCardBody.appendChild(brandParagraph);
+
+    divCard.appendChild(imgCard);
+    divCard.appendChild(divCardBody);
+
+    divCol.appendChild(divCard);
+
+    detailsContainer.appendChild(divCol);
 };
+
+export default queryValue;

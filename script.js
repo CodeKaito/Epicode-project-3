@@ -60,13 +60,18 @@ let createTemplate = (data) => {
         let cardBodyParagraph = document.createElement('p');
         cardBodyParagraph.innerText = `${description}`;
 
+        let cardBodyEditButton = document.createElement('a');
+        cardBodyEditButton.href = `./pages/edit/index.html?q=${_id}`;
+        cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'me-2');
+        cardBodyEditButton.innerText = 'Edit';
+
         let cardBodyButton = document.createElement('a');
         cardBodyButton.href = `./pages/details/index.html?q=${_id}`;
-        cardBodyButton.classList.add('btn', 'btn-primary', 'ms-2');
+        cardBodyButton.classList.add('btn', 'btn-primary');
         cardBodyButton.innerText = 'Details';
 
         let cardBodyDeleteButton = document.createElement('button');
-        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button'); // Modifica l'ID in una classe
+        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button' , 'ms-2'); 
         cardBodyDeleteButton.innerText = 'Delete';
 
 
@@ -77,8 +82,10 @@ let createTemplate = (data) => {
         // Aggiungi gli elementi correttamente
         divCardBody.appendChild(cardBodyTitle);
         divCardBody.appendChild(cardBodyParagraph);
-        divCardBody.appendChild(cardBodyDeleteButton);
+        
+        divCardBody.appendChild(cardBodyEditButton);
         divCardBody.appendChild(cardBodyButton);
+        divCardBody.appendChild(cardBodyDeleteButton);
 
         divCard.appendChild(imgCard);
         divCard.appendChild(divCardBody);
