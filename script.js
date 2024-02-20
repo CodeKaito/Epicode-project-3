@@ -19,8 +19,11 @@ async function fetchData() {
 
         let data = await response.json();
         console.log(data);
-        createTemplate(data);
-
+        if (data.length === 0) {
+          noElementTitle();
+        } else {
+          createTemplate(data);
+        };
     } catch (error) {
         console.log(error);
     }
@@ -37,6 +40,18 @@ async function fetchData() {
 //                 </div>
 //             </div>
 //         </div>
+
+let noElementTitle = () => {
+  let divCol = document.createElement('div');
+  divCol.classList.add('d-flex', 'justify-content-center', 'col-md-6', 'align-items-center');
+
+  let divTitle = document.createElement('h3');
+  divTitle.innerText = "No elements to display.";
+
+  divCol.appendChild(divTitle);
+
+  homepage.appendChild(divCol);
+};
 
 let createTemplate = (data) => {
     data.forEach(({ _id, name, description, imageUrl }) => {
