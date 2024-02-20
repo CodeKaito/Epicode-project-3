@@ -4,9 +4,16 @@ Repository del terzo Progetto di Epicode
 ## Endpoint
 https://striveschool-api.herokuapp.com/api/product/
 
-const apiUrl = "https://striveschool-api.herokuapp.com/api/product";
+## Fare la parte grafica
 
-const authorizationToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWNkZGU5MGUwZWVkODAwMWEzY2FkNjEiLCJpYXQiOjE3MDgzNjcyOTAsImV4cCI6MTcwOTU3Njg5MH0.hxAVd25Y1IiaQFxzOn8nHtkhpHiuOuzNwBSZT_pyrt4"
+## Migliorare responsiveness
 
-export { authorizationToken };
-export default apiUrl;
+## Discorso del map
+
+## Separare la parte backoffice dalla homepage
+
+## fare authentication con index.js
+
+## Togliere i doppioni di fetch
+
+## Aggiungere price

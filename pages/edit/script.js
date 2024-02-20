@@ -22,7 +22,8 @@ let queryValue = params.get('q');
 const itemIdToUpdate = queryValue;
 
 // Funzione per ottenere i valori degli elementi e fare la chiamata API di tipo POST
-async function patchData() {
+async function patchData(e) {
+    e.preventDefault();
     const productsToUpdate = {
         name: productTitle.value,
         description: productDesc.value,
@@ -44,7 +45,8 @@ async function patchData() {
         let data = await response.json();
         console.log('Dati aggiornati con successo:', data);
 
-        window.location.href = window.location.pathname.replace("details/index.html", "index.html");
+        window.location.href = '/index.html'
+
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
     }
