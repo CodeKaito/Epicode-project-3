@@ -53,17 +53,17 @@ let showDetails = ({ name, description, price, brand, imageUrl }) => {
     let divCardBody = document.createElement('div');
     divCardBody.classList.add('card-body');
 
-    let title = document.createElement('h5');
-    title.innerText = name;
+    let title = document.createElement('p');
+    title.innerHTML = `<p>This is the name of the product: <strong>${name}<strong><p>`;
 
     let priceParagraph = document.createElement('p');
-    priceParagraph.innerText = `Price: ${price}`;
+    priceParagraph.innerHTML = `<p>This is the price: $<strong>${price}<strong><p>`;
 
     let descriptionParagraph = document.createElement('p');
-    descriptionParagraph.innerText = `Description: ${description}`;
+    descriptionParagraph.innerHTML = `<p>This is the description: <strong>${description}<strong><p>`;
 
     let brandParagraph = document.createElement('p');
-    brandParagraph.innerText = `Brand: ${brand}`;
+    brandParagraph.innerHTML = `<p>This is the brand: <strong>${brand}<strong><p>`;
 
     divCardBody.appendChild(title);
     divCardBody.appendChild(priceParagraph);
@@ -77,5 +77,3 @@ let showDetails = ({ name, description, price, brand, imageUrl }) => {
 
     detailsContainer.appendChild(divCol);
 };
-
-export default queryValue;

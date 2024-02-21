@@ -53,7 +53,7 @@ let noElementTitle = () => {
 
 //TODO: Trasformare in map
 let createTemplate = (data) => {
-    data.forEach(({ _id, name, description, imageUrl, price, brand }) => {
+  const cardElements = data.map(({ _id, name, description, imageUrl, price, brand }) => {
         let divCol = document.createElement('div');
         divCol.classList.add('col-xl-3', 'col-md-6', 'mb-3');
 
@@ -115,9 +115,11 @@ let createTemplate = (data) => {
 
         divCol.appendChild(divCard);
 
-        // Aggiungi il divCol a homepage
-        homepage.appendChild(divCol);
+        return divCol;
     });
+
+    // Aggiungi il divCol a homepage
+    homepage.appendChild(...cardElements);
 };
 
 // Funzione per eliminare un dato
