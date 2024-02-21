@@ -56,7 +56,8 @@ async function fetchData() {
 
         let data = await response.json();
         console.log(data);
-        window.location.href = '/admin/homepage/index.html';
+
+        // window.location.href = '/admin/homepage/index.html';
 
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
