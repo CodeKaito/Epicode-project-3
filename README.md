@@ -11,8 +11,10 @@ https://striveschool-api.herokuapp.com/api/product/
 ## Discorso del map
 
 ## Separare la parte backoffice dalla homepage
+FATTO
 
 ## fare authentication con index.js
+FATTO
 
 ## Togliere i doppioni di fetch
 

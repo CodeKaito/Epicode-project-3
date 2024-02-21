@@ -41,7 +41,7 @@ async function fetchData() {
 
 let noElementTitle = () => {
   let divCol = document.createElement('div');
-  divCol.classList.add('d-flex', 'justify-content-center', 'col-md-6', 'align-items-center');
+  divCol.classList.add('d-flex', 'justify-content-center', 'col-sm-6', 'align-items-center');
 
   let divTitle = document.createElement('h3');
   divTitle.innerText = "No elements to display.";
@@ -55,7 +55,7 @@ let noElementTitle = () => {
 let createTemplate = (data) => {
     data.forEach(({ _id, name, description, imageUrl }) => {
         let divCol = document.createElement('div');
-        divCol.classList.add('col-md-3');
+        divCol.classList.add('col-xl-3', 'col-lg-6', 'mb-3');
 
         let divCard = document.createElement('div');
         divCard.classList.add('card');
@@ -75,12 +75,12 @@ let createTemplate = (data) => {
         cardBodyParagraph.innerText = `${description}`;
 
         let cardBodyEditButton = document.createElement('a');
-        cardBodyEditButton.href = `./pages/edit/index.html?q=${_id}`;
+        cardBodyEditButton.href = `/admin/edit/index.html?q=${_id}`;
         cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'me-2');
         cardBodyEditButton.innerText = 'Edit';
 
         let cardBodyButton = document.createElement('a');
-        cardBodyButton.href = `./pages/details/index.html?q=${_id}`;
+        cardBodyButton.href = `/admin/details/index.html?q=${_id}`;
         cardBodyButton.classList.add('btn', 'btn-primary');
         cardBodyButton.innerText = 'Details';
 

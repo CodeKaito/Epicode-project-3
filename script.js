@@ -41,7 +41,7 @@ async function fetchData() {
 
 let noElementTitle = () => {
   let divCol = document.createElement('div');
-  divCol.classList.add('d-flex', 'justify-content-center', 'col-md-6', 'align-items-center');
+  divCol.classList.add('d-flex', 'justify-content-center', 'col-sm-6', 'align-items-center');
 
   let divTitle = document.createElement('h3');
   divTitle.innerText = "No elements to display.";
@@ -55,7 +55,7 @@ let noElementTitle = () => {
 let createTemplate = (data) => {
     data.forEach(({ _id, name, description, imageUrl }) => {
         let divCol = document.createElement('div');
-        divCol.classList.add('col-md-3');
+        divCol.classList.add('col-xl-3', 'col-lg-6' , 'mb-3');
 
         let divCard = document.createElement('div');
         divCard.classList.add('card');
@@ -74,32 +74,16 @@ let createTemplate = (data) => {
         let cardBodyParagraph = document.createElement('p');
         cardBodyParagraph.innerText = `${description}`;
 
-        let cardBodyEditButton = document.createElement('a');
-        cardBodyEditButton.href = `./pages/edit/index.html?q=${_id}`;
-        cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'me-2');
-        cardBodyEditButton.innerText = 'Edit';
-
         let cardBodyButton = document.createElement('a');
         cardBodyButton.href = `./pages/details/index.html?q=${_id}`;
         cardBodyButton.classList.add('btn', 'btn-primary');
         cardBodyButton.innerText = 'Details';
 
-        let cardBodyDeleteButton = document.createElement('button');
-        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button' , 'ms-2'); 
-        cardBodyDeleteButton.innerText = 'Delete';
-
-
-        cardBodyDeleteButton.addEventListener('click', () => {
-            deleteData(_id);
-        });
-
         // Aggiungi gli elementi correttamente
         divCardBody.appendChild(cardBodyTitle);
         divCardBody.appendChild(cardBodyParagraph);
         
-        divCardBody.appendChild(cardBodyEditButton);
         divCardBody.appendChild(cardBodyButton);
-        divCardBody.appendChild(cardBodyDeleteButton);
 
         divCard.appendChild(imgCard);
         divCard.appendChild(divCardBody);
@@ -110,31 +94,6 @@ let createTemplate = (data) => {
         homepage.appendChild(divCol);
     });
 };
-
-// Funzione per eliminare un dato
-async function deleteData(itemId) {
-    try {
-      const response = await fetch(`${apiUrl}/${itemId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${authorizationToken}`
-        },
-      });
-  
-      // Controlla se la risposta è nel range 200-299 (successo)
-      if (response.ok) {
-        console.log('Dato eliminato con successo');
-        // Puoi richiamare la funzione fetchData per aggiornare la visualizzazione dopo l'eliminazione
-        fetchData();
-        location.reload();
-      } else {
-        // Se la risposta non è nel range 200-299, lancia un errore
-        throw new Error(`Errore nella chiamata API: ${response.status} - ${response.statusText}`);
-      }
-    } catch (error) {
-      console.error('Errore durante la chiamata API:', error.message);
-    }
-}
 
 // Chiamata api al reload della pagina
 window.onload = () => {

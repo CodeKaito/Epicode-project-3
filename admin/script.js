@@ -20,7 +20,9 @@ function authenticateUser() {
 
     if (userEmail === email && userPassword === password) {
         console.log("Authentication successful");
+        alert("Authentication successful, redirect to admin console. Click OK");
         window.location.href = '/admin/homepage/index.html';
+
     } else {
         console.log("Authentication failed");
         alert("Authentication failed");
