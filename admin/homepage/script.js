@@ -51,7 +51,6 @@ let noElementTitle = () => {
   homepage.appendChild(divCol);
 };
 
-//TODO: Trasformare in map
 let createTemplate = (data) => {
   const cardElements = data.map(({ _id, name, description, imageUrl, price, brand }) => {
         let divCol = document.createElement('div');
@@ -119,7 +118,8 @@ let createTemplate = (data) => {
     });
 
     // Aggiungi il divCol a homepage
-    homepage.appendChild(...cardElements);
+    homepage.append(...cardElements);
+    console.log(cardElements)
 };
 
 // Funzione per eliminare un dato
