@@ -23,3 +23,13 @@ form {
 .priceInput {
     padding-left: 20px;
 }
+
+section.cardCreation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#cardCreation {
+    width: 40%;
+}

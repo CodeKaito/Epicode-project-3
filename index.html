@@ -6,7 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link rel="icon" href="https://cdn.shopify.com/shopifycloud/web/assets/v1/favicon-default-6cbad9de243dbae3.ico" type="image/x-icon">
+    <link rel="icon" href="https://cdn.shopify.com/shopifycloud/web/assets/v1/favicon-default-6cbad9de243dbae3.ico"
+        type="image/x-icon">
     <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -41,10 +42,32 @@
                 </ul>
 
                 <div class="d-flex">
-                    <button type="button" class="btn btn-outline-primary me-2">
-                        <a href="/admin/index.html">Admin console</a>
-                    </button>
+                    
                 </div>
+
+                <div class="btn-group">
+                    <div class="user-logo-container m-2">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                            data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3003/3003035.png"
+                                width="35px" alt="user-logo" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <div class="d-flex align-items-center justify-content-center px-2">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3003/3003035.png"
+                                    height="40px" alt="logo-dropdown" class="mx-1" />
+                                <div class="mx-2">
+                                    <span class="cursor-pointer text-primary">User</span>
+                                </div>
+                            </div>
+                            <hr />
+                            <button type="button" class="btn btn-outline-primary me-2 mx-auto d-flex justify-content-center">
+                                <a href="/admin/index.html">Admin console</a>
+                            </button>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </nav>

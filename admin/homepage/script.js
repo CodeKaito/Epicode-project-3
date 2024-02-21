@@ -76,6 +76,7 @@ let createTemplate = (data) => {
 
         let cardBodyParagraph = document.createElement('p');
         cardBodyParagraph.innerText = `${description}`;
+        cardBodyParagraph.classList.add('text-truncate'); 
 
         let cardBodyPrice = document.createElement('p');
         cardBodyPrice.innerText = `$${price}`;
