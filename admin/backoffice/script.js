@@ -110,4 +110,4 @@ async function cardExample(title, description, image, brand, price) {
 
 }
 
-cardExample(productTitle.value, productDesc.value);
+cardExample();

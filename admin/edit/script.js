@@ -85,6 +85,8 @@ async function loadData() {
         imageUrl.value = data.imageUrl;
         productPrice.value = data.price;
 
+        updateCard();
+
         console.log('Dati caricati con successo:', data);
     } catch (error) {
         console.error("Errore durante il caricamento dei dati:", error);
@@ -126,7 +128,7 @@ async function cardExample(title, description, image, brand, price) {
         cardBodyParagraph.innerText = description || 'This is the product description';
 
     let cardBodyPrice = document.createElement('p');
-        cardBodyPrice.innerText = price || '$54';
+        cardBodyPrice.innerText = '$'+price;
 
     divCardBody.appendChild(cardBodyBrand)
     divCardBody.appendChild(cardBodyTitle);
@@ -137,8 +139,6 @@ async function cardExample(title, description, image, brand, price) {
     divCard.appendChild(divCardBody);
 
     cardCreation.appendChild(divCard);
-
-
 }
 
-cardExample(productTitle.value, productDesc.value);
+cardExample();
