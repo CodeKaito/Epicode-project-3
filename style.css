@@ -1,3 +1,11 @@
 a:hover {
     color: white;
 }
+
+.cardButton {
+    display: none;
+}
+
+.card:hover .cardButton {
+    display: block;
+}

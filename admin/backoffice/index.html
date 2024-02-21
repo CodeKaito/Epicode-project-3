@@ -46,45 +46,54 @@
         </section>
 
         <!-- Section creation of a new product -->
-        <section>
-            <div class="container p-5 justify-content-center d-flex">
-                <form>
-                    <div class="mb-3">
-                        <label for="productTitle" class="form-label">Name of the product</label>
-                        <input type="text" class="form-control" id="productTitle" aria-describedby="title" required>
-                        <div id="titleProduct" class="form-text">Digit a unique name for your product.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="productDesc" class="form-label">Description of the product</label>
-                        <input type="textarea" class="form-control" id="productDesc" required>
-                        <div class="form-text">Provide a detailed description of your product.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="productBrand" class="form-label">Brand of the product</label>
-                        <input type="text" class="form-control" id="productBrand" required>
-                        <div class="form-text">Enter the brand of your product.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="imageUrl" class="form-label">Image of the product</label>
-                        <input type="url" class="form-control" id="imageUrl" required>
-                        <div class="form-text">Provide the URL for the product image.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="productPrice" class="form-label">Price of the product</label>
-                        <div class="productPrice-container">
-                            <span class="dollar-sign">$</span>
-                            <input type="number" class="form-control priceInput" id="productPrice" name="price" step="0.01" required>
+        <div class="container-fluid row justify-content-center mx-auto">
+            <section class="col-lg-6">
+                <div class="container p-5 justify-content-center d-flex">
+                    <form>
+                        <div class="mb-3">
+                            <label for="productTitle" class="form-label">Name of the product</label>
+                            <input type="text" class="form-control" id="productTitle" aria-describedby="title" required>
+                            <div id="titleProduct" class="form-text">Digit a unique name for your product.</div>
                         </div>
-                        <div class="form-text">Enter the price of your product.</div>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary" id="addBtn">Add Product</button>
-                        <button type="reset" class="btn btn-danger">Clear Fields</button>
-                    </div>
-                </form>
-            </div>
-        </section>
+                        <div class="mb-3">
+                            <label for="productDesc" class="form-label">Description of the product</label>
+                            <input type="textarea" class="form-control" id="productDesc" required>
+                            <div class="form-text">Provide a detailed description of your product.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productBrand" class="form-label">Brand of the product</label>
+                            <input type="text" class="form-control" id="productBrand" required>
+                            <div class="form-text">Enter the brand of your product.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="imageUrl" class="form-label">Image of the product</label>
+                            <input type="url" class="form-control" id="imageUrl" required>
+                            <div class="form-text">Provide the URL for the product image.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="productPrice" class="form-label">Price of the product</label>
+                            <div class="productPrice-container">
+                                <span class="dollar-sign">$</span>
+                                <input type="number" class="form-control priceInput" id="productPrice" name="price" step="0.01" required>
+                            </div>
+                            <div class="form-text">Enter the price of your product.</div>
+                        </div>
+    
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-primary" id="addBtn">Add Product</button>
+                            <button type="reset" class="btn btn-danger">Clear Fields</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="col-lg-6 cardCreation-container">
+                <!-- Creation of the card -->
+                <div class="container" id="cardCreation">
+                    <!-- Card Example -->
+                </div>
+            </section>
+        </div>
+        
     </main>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top container">
         <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company, Inc</p>

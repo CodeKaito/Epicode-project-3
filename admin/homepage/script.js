@@ -53,12 +53,12 @@ let noElementTitle = () => {
 
 //TODO: Trasformare in map
 let createTemplate = (data) => {
-    data.forEach(({ _id, name, description, imageUrl }) => {
+    data.forEach(({ _id, name, description, imageUrl, price, brand }) => {
         let divCol = document.createElement('div');
-        divCol.classList.add('col-xl-3', 'col-lg-6', 'mb-3');
+        divCol.classList.add('col-xl-3', 'col-md-6', 'mb-3');
 
         let divCard = document.createElement('div');
-        divCard.classList.add('card');
+        divCard.classList.add('card', 'text-center');
 
         let imgCard = document.createElement('img');
         imgCard.src = `${imageUrl}`;
@@ -68,24 +68,31 @@ let createTemplate = (data) => {
         let divCardBody = document.createElement('div');
         divCardBody.classList.add('card-body');
 
+        let cardBodyBrand = document.createElement('p');
+        cardBodyBrand.innerText = `${brand}`;
+        cardBodyBrand.classList.add('brand-text');
+
         let cardBodyTitle = document.createElement('h5');
         cardBodyTitle.innerText = `${name}`;
 
         let cardBodyParagraph = document.createElement('p');
         cardBodyParagraph.innerText = `${description}`;
 
+        let cardBodyPrice = document.createElement('p');
+        cardBodyPrice.innerText = `$${price}`;
+
         let cardBodyEditButton = document.createElement('a');
         cardBodyEditButton.href = `/admin/edit/index.html?q=${_id}`;
-        cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'me-2');
+        cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'd-block', 'mb-2');
         cardBodyEditButton.innerText = 'Edit';
 
         let cardBodyButton = document.createElement('a');
         cardBodyButton.href = `/admin/details/index.html?q=${_id}`;
-        cardBodyButton.classList.add('btn', 'btn-primary');
+        cardBodyButton.classList.add('btn', 'btn-primary', 'mb-3');
         cardBodyButton.innerText = 'Details';
 
-        let cardBodyDeleteButton = document.createElement('button');
-        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button' , 'ms-2'); 
+        let cardBodyDeleteButton = document.createElement('a');
+        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button' , 'd-block'); 
         cardBodyDeleteButton.innerText = 'Delete';
 
 
@@ -93,12 +100,14 @@ let createTemplate = (data) => {
             deleteData(_id);
         });
 
-        // Aggiungi gli elementi correttamente
+        divCard.appendChild(cardBodyButton);
+
+        divCardBody.appendChild(cardBodyBrand)
         divCardBody.appendChild(cardBodyTitle);
         divCardBody.appendChild(cardBodyParagraph);
+        divCardBody.appendChild(cardBodyPrice);
         
         divCardBody.appendChild(cardBodyEditButton);
-        divCardBody.appendChild(cardBodyButton);
         divCardBody.appendChild(cardBodyDeleteButton);
 
         divCard.appendChild(imgCard);

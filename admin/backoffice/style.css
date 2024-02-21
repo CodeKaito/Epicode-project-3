@@ -9,6 +9,16 @@ form {
     width: 50%;
 }
 
+section.cardCreation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#cardCreation {
+    width: 40%;
+}
+
 .productPrice-container {
     position: relative;
 }
