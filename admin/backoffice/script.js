@@ -67,7 +67,7 @@ async function fetchData() {
 addBtn.addEventListener('click', fetchData);
 
 function clearCardCreation() {
-    // Remove all child elements from cardCreation
+    // Rimuovo tutte le card create per evitare che si creino infiniti cards
     while (cardCreation.firstChild) {
         cardCreation.removeChild(cardCreation.firstChild);
     }
@@ -107,8 +107,6 @@ async function cardExample(title, description, image, brand, price) {
     divCard.appendChild(divCardBody);
 
     cardCreation.appendChild(divCard);
-
-
 }
 
 cardExample();
