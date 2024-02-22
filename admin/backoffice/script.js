@@ -30,7 +30,8 @@ productPrice.addEventListener('input', updateCard);
 
 function updateCard() {
     clearCardCreation();
-    cardExample(productTitle.value, productDesc.value, imageUrl.value, productBrand.value, productPrice.value );
+    cardExample(productTitle.value, productDesc.value, imageUrl.value, productBrand.value, productPrice.value);
+    checkAllInput();
 }
 
 // Funzione per ottenere i valori degli elementi e fare la chiamata API di tipo POST
@@ -43,6 +44,8 @@ async function fetchData() {
         imageUrl: imageUrl.value,
         price: productPrice.value,
     };
+
+    checkAllInput();
 
     try {
         let response = await fetch(apiUrl, {
@@ -57,7 +60,7 @@ async function fetchData() {
         let data = await response.json();
         console.log(data);
 
-        // window.location.href = '/admin/homepage/index.html';
+        window.location.href = '/admin/homepage/index.html';
 
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
@@ -70,6 +73,20 @@ function clearCardCreation() {
     // Rimuovo tutte le card create per evitare che si creino infiniti cards
     while (cardCreation.firstChild) {
         cardCreation.removeChild(cardCreation.firstChild);
+    }
+}
+
+function checkAllInput() {
+    const title = productTitle.value.trim();
+    const desc = productDesc.value.trim();
+    const brand = productBrand.value.trim();
+    const image = imageUrl.value.trim();
+    const price = productPrice.value.trim();
+
+    if (title !== '' && desc !== '' && brand !== '' && image !== '' && price !== '') {
+        addBtn.classList.remove('disabled');
+    } else {
+        addBtn.classList.add('disabled');
     }
 }
 
