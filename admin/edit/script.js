@@ -107,7 +107,7 @@ function clearCardCreation() {
     }
 }
 
-async function cardExample(title, description, image, brand, price) {
+let cardExample = (title, description, image, brand, price) => {
     let divCard = document.createElement('div');
         divCard.classList.add('card', 'text-center');
 
@@ -143,4 +143,4 @@ async function cardExample(title, description, image, brand, price) {
     cardCreation.appendChild(divCard);
 }
 
-cardExample();
+window.load = cardExample();
