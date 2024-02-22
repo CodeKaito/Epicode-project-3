@@ -28,6 +28,13 @@ imageUrl.addEventListener('input', updateCard);
 
 productPrice.addEventListener('input', updateCard);
 
+productPrice.addEventListener('input', function (e) {
+    
+    let inputValue = e.target.value;
+    inputValue = inputValue.replace(/[^0-9]/g, '');
+    e.target.value = inputValue;
+});
+
 function updateCard() {
     clearCardCreation();
     cardExample(productTitle.value, productDesc.value, imageUrl.value, productBrand.value, productPrice.value);
