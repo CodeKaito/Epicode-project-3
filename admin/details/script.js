@@ -11,7 +11,7 @@ if (window.location.search) {
     // Utilizzo la queryValue per essere utilizzato come id
     let queryValue = params.get('q');
 
-    // Utilizza async/await per gestire in modo più pulito le promesse
+    // Utilizzo dell async/await per gestire in modo più pulito le promesse
     async function fetchData() {
         try {
             let response = await fetch(`${apiUrl}/${queryValue}`, {
