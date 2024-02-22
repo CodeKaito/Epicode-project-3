@@ -78,6 +78,9 @@ let createTemplate = (data) => {
         cardBodyParagraph.innerText = `${description}`;
         cardBodyParagraph.classList.add('text-truncate');
 
+        let divCardBodyPrice = document.createElement('div');
+        divCardBodyPrice.classList.add('row');
+
         let cardBodyPrice = document.createElement('p');
         cardBodyPrice.innerText = `$${price}`;
 
@@ -89,6 +92,8 @@ let createTemplate = (data) => {
         divCardBody.appendChild(cardBodyBrand)
         divCardBody.appendChild(cardBodyTitle);
         divCardBody.appendChild(cardBodyParagraph);
+
+        divCardBody.appendChild(divCardBodyPrice);
         divCardBody.appendChild(cardBodyPrice);
         
         divCardBody.appendChild(cardBodyButton);
