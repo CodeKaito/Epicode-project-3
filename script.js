@@ -80,13 +80,15 @@ let createTemplate = (data) => {
 
         let divCardBodyPrice = document.createElement('div');
         divCardBodyPrice.classList.add('row');
+        
 
         let cardBodyPrice = document.createElement('p');
-        cardBodyPrice.innerText = `$${price}`;
+        cardBodyPrice.innerText = `Price: $${price}`;
+        cardBodyPrice.classList.add('col-6', 'd-flex', 'align-items-center', 'justify-content-center', 'mb-3');
 
         let cardBodyButton = document.createElement('a');
         cardBodyButton.href = `./pages/details/index.html?q=${_id}`;
-        cardBodyButton.classList.add('btn', 'btn-primary', 'cardButton');
+        cardBodyButton.classList.add('col-6','btn', 'btn-primary', 'cardButton');
         cardBodyButton.innerText = 'Details';
 
         divCardBody.appendChild(cardBodyBrand)
@@ -94,9 +96,9 @@ let createTemplate = (data) => {
         divCardBody.appendChild(cardBodyParagraph);
 
         divCardBody.appendChild(divCardBodyPrice);
-        divCardBody.appendChild(cardBodyPrice);
+        divCardBodyPrice.appendChild(cardBodyPrice);
         
-        divCardBody.appendChild(cardBodyButton);
+        divCardBodyPrice.appendChild(cardBodyButton);
 
         divCard.appendChild(imgCard);
         divCard.appendChild(divCardBody);
