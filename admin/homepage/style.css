@@ -2,15 +2,15 @@ a:hover {
     color: white;
 }
 
-.nav-item {
+.nav-link-container {
     padding: 2px;
     border-radius: 10px;
 }
 
-.nav-item:hover {
+.nav-link-container:hover {
     background-color: #0d6efd;
 }
 
-.nav-item:hover .nav-link {
+.nav-link-container:hover #addProduct {
     color: white;
 }

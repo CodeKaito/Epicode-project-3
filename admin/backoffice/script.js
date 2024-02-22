@@ -35,6 +35,7 @@ productPrice.addEventListener('input', function (e) {
     e.target.value = inputValue;
 });
 
+// La funzione che permette alla card di anteprima del product di esister
 function updateCard() {
     clearCardCreation();
     cardExample(productTitle.value, productDesc.value, imageUrl.value, productBrand.value, productPrice.value);
@@ -43,7 +44,7 @@ function updateCard() {
 
 // Funzione per ottenere i valori degli elementi e fare la chiamata API di tipo POST
 async function fetchData() {
-    // Ottieni i valori degli elementi quando la funzione è chiamata
+    // Ottengo i valori degli elementi quando la funzione è chiamata
     const postData = {
         name: productTitle.value,
         description: productDesc.value,
@@ -67,7 +68,7 @@ async function fetchData() {
         let data = await response.json();
         console.log(data);
 
-        alert('Product created successfully:' + data.name);
+        window.location.href = '/admin/homepage/index.html';
 
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
@@ -77,12 +78,13 @@ async function fetchData() {
 addBtn.addEventListener('click', fetchData);
 
 function clearCardCreation() {
-    // Rimuovo tutte le card create per evitare che si creino infiniti cards
+    // Rimuovo tutte le card create per evitare che si creino infinite cards
     while (cardCreation.firstChild) {
         cardCreation.removeChild(cardCreation.firstChild);
     }
 }
 
+// FUnzione per controllare se tutti gli input sono correttamente popolati, altrimenti inserisce un disabled al button addBtn se non esiste giá nel dom
 function checkAllInput() {
     const title = productTitle.value.trim();
     const desc = productDesc.value.trim();
@@ -118,6 +120,7 @@ async function cardExample(title, description, image, brand, price) {
 
     let cardBodyParagraph = document.createElement('p');
         cardBodyParagraph.innerText = description || 'This is the product description';
+        cardBodyParagraph.classList.add('text-truncate');
 
     let cardBodyPrice = document.createElement('p');
         cardBodyPrice.innerText = price || '$54';
@@ -133,4 +136,5 @@ async function cardExample(title, description, image, brand, price) {
     cardCreation.appendChild(divCard);
 }
 
-cardExample();
+// Inizializzo la card al reload della page
+window.onload = cardExample();
