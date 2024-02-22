@@ -9,3 +9,7 @@ a:hover {
 .card:hover .cardButton {
     display: block;
 }
+
+.border-card-body {
+    border: 20px solid black;
+}

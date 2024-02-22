@@ -40,42 +40,55 @@ if (window.location.search) {
 let showDetails = ({ name, description, price, brand, imageUrl }) => {
 
     let divCol = document.createElement('div');
-    divCol.classList.add('col-md-3');
+    divCol.classList.add('col-md-6');
 
     let divCard = document.createElement('div');
-    divCard.classList.add('card', 'details');
+    divCard.classList.add('card', 'mb-3', 'details');
+
+    let divRow = document.createElement('div');
+    divRow.classList.add('row', 'g-0');
+
+    let divColImg = document.createElement('div');
+    divColImg.classList.add('col-lg-5');
 
     let imgCard = document.createElement('img');
     imgCard.src = imageUrl;
     imgCard.alt = name;
-    imgCard.classList.add('card-img-top');
+    imgCard.classList.add('img-fluid', 'rounded-start');
+
+    let divColCardBody = document.createElement('div');
+    divColCardBody.classList.add('col-lg-7');
 
     let divCardBody = document.createElement('div');
-    divCardBody.classList.add('card-body');
+    divCardBody.classList.add('card-body', 'border-card-body');
 
     let title = document.createElement('p');
-    title.innerHTML = `<p>This is the name of the product: <strong>${name}<strong><p>`;
+    title.innerHTML = `<p>Name of the product: <strong>${name}<strong><p>`;
 
     let priceParagraph = document.createElement('p');
-    priceParagraph.innerHTML = `<p>This is the price: $<strong>${price}<strong><p>`;
+    priceParagraph.innerHTML = `<p>Price: $<strong>${price}<strong><p>`;
 
     let descriptionParagraph = document.createElement('p');
-    descriptionParagraph.innerHTML = `<p>This is the description: <strong>${description}<strong><p>`;
+    descriptionParagraph.innerHTML = `<p>Description: <strong>${description}<strong><p>`;
 
     let brandParagraph = document.createElement('p');
-    brandParagraph.innerHTML = `<p>This is the brand: <strong>${brand}<strong><p>`;
+    brandParagraph.innerHTML = `<p>Brand: <strong>${brand}<strong><p>`;
 
     divCardBody.appendChild(title);
     divCardBody.appendChild(priceParagraph);
     divCardBody.appendChild(descriptionParagraph);
     divCardBody.appendChild(brandParagraph);
 
-    divCard.appendChild(imgCard);
-    divCard.appendChild(divCardBody);
+    divColImg.appendChild(imgCard);
+    
+    divRow.appendChild(divColImg);
+    divRow.appendChild(divColCardBody);
+
+    divColCardBody.appendChild(divCardBody);
+
+    divCard.appendChild(divRow);
 
     divCol.appendChild(divCard);
 
     detailsContainer.appendChild(divCol);
 };
-
-export default queryValue;
