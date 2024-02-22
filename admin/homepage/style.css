@@ -14,9 +14,3 @@ a:hover {
 .nav-link-container:hover #addProduct {
     color: white;
 }
-
-.card img {
-    min-height: 200px;
-    max-height: 200px;
-    object-fit: cover;
-}

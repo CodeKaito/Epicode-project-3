@@ -2,14 +2,24 @@ a:hover {
     color: white;
 }
 
-.cardButton {
-    display: none;
-}
-
-.card:hover .cardButton {
-    display: block;
-}
-
 .border-card-body {
     border: 20px solid black;
+}
+
+/* Dspositivi grandi LG */
+@media (min-width: 992px) {
+    .cardButton {
+      display: none;
+    }
+  
+    .card:hover .cardButton {
+      display: block;
+    }
+  }
+  
+/* Smartphone e tablet */
+@media (max-width: 991px) {
+    .cardButton {
+      display: block;
+    }
 }
