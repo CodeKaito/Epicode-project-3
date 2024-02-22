@@ -60,7 +60,9 @@ async function patchData(e) {
         let data = await response.json();
         console.log('Dati aggiornati con successo:', data);
 
-        window.location.href = '/admin/homepage/index.html'
+        alert('Data updated successfully');
+
+        window.location.href = '/admin/homepage/index.html';
 
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);

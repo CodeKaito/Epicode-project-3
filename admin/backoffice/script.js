@@ -68,6 +68,8 @@ async function fetchData() {
         let data = await response.json();
         console.log(data);
 
+        alert('Product created successfully: ' + data.name)
+
         window.location.href = '/admin/homepage/index.html';
 
     } catch (error) {
@@ -105,7 +107,7 @@ async function cardExample(title, description, image, brand, price) {
 
     let imgCard = document.createElement('img');
         imgCard.src = image || 'https://images.pexels.com/photos/4389675/pexels-photo-4389675.jpeg?auto=compress&cs=tinysrgb&w=600';
-        imgCard.classList.add('card-img-top');
+        imgCard.classList.add('img-fluid');
         imgCard.alt = title;
 
     let divCardBody = document.createElement('div');
