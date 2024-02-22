@@ -4,3 +4,9 @@ a#return {
 span#goback:hover {
     text-decoration: underline;
 }
+
+.card img {
+    min-height: none;
+    max-height: 200px;
+    object-fit: cover;
+}
