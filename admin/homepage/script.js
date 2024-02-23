@@ -6,7 +6,7 @@ import { authorizationToken } from "/index.js";
 // Variabili globali
 let homepage = document.getElementById('homepage');
 
-// Function per fare il fetching principale dell'api
+// Function per fare il la chiamata GET principale dell'api
 async function fetchData() {
     try {
         let response = await fetch(apiUrl, {
@@ -17,11 +17,16 @@ async function fetchData() {
 
         let data = await response.json();
         console.log(data);
+
+        // Se non ci sono dati visualizzo il titolo creato dalla funzione noElementTitle()
         if (data.length === 0) {
           noElementTitle();
         } else {
+
+          // Altrimenti se ci sono dati visualizzo le card create dinamicamente
           createTemplate(data);
         };
+
     } catch (error) {
         console.log(error);
     }
@@ -51,76 +56,78 @@ let noElementTitle = () => {
   homepage.appendChild(divCol);
 };
 
+// Funzione che crea le card in modo dinamico
 let createTemplate = (data) => {
+  // Utilizzo del map per separare l'api originale inserendo i valori in un nuovo array chiamato cardElements
   const cardElements = data.map(({ _id, name, description, imageUrl, price, brand }) => {
         let divCol = document.createElement('div');
-        divCol.classList.add('col-xl-3', 'col-md-6', 'mb-3');
+          divCol.classList.add('col-xl-3', 'col-md-6', 'mb-3');
 
         let divCard = document.createElement('div');
-        divCard.classList.add('card', 'text-center');
+          divCard.classList.add('card', 'text-center');
 
         let imgCard = document.createElement('img');
-        imgCard.src = `${imageUrl}`;
-        imgCard.classList.add('card-img-top');
-        imgCard.alt = `${name}`;
+          imgCard.src = `${imageUrl}`;
+          imgCard.classList.add('card-img-top');
+          imgCard.alt = `${name}`;
 
         let divCardBody = document.createElement('div');
-        divCardBody.classList.add('card-body');
+          divCardBody.classList.add('card-body');
 
         let cardBodyBrand = document.createElement('p');
-        cardBodyBrand.innerText = `${brand}`;
-        cardBodyBrand.classList.add('brand-text');
+          cardBodyBrand.innerText = `${brand}`;
+          cardBodyBrand.classList.add('brand-text');
 
         let cardBodyTitle = document.createElement('h5');
-        cardBodyTitle.innerText = `${name}`;
+          cardBodyTitle.innerText = `${name}`;
 
         let cardBodyParagraph = document.createElement('p');
-        cardBodyParagraph.innerText = `${description}`;
-        cardBodyParagraph.classList.add('text-truncate'); 
+          cardBodyParagraph.innerText = `${description}`;
+          cardBodyParagraph.classList.add('text-truncate'); 
 
         let cardBodyPrice = document.createElement('p');
-        cardBodyPrice.innerText = `$${price}`;
+          cardBodyPrice.innerText = `$${price}`;
 
         let cardBodyEditButton = document.createElement('a');
-        cardBodyEditButton.href = `/admin/edit/index.html?q=${_id}`;
-        cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'd-block', 'mb-2');
-        cardBodyEditButton.innerText = 'Edit';
+          cardBodyEditButton.href = `/admin/edit/index.html?q=${_id}`;
+          cardBodyEditButton.classList.add('btn', 'btn-success', 'edit-button' , 'd-block', 'mb-2');
+          cardBodyEditButton.innerText = 'Edit';
 
         let cardBodyButton = document.createElement('a');
-        cardBodyButton.href = `/admin/details/index.html?q=${_id}`;
-        cardBodyButton.classList.add('btn', 'btn-primary', 'mb-3');
-        cardBodyButton.innerText = 'Details';
+          cardBodyButton.href = `/admin/details/index.html?q=${_id}`;
+          cardBodyButton.classList.add('btn', 'btn-primary', 'mb-3');
+          cardBodyButton.innerText = 'Details';
 
         let cardBodyDeleteButton = document.createElement('a');
-        cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button' , 'd-block'); 
-        cardBodyDeleteButton.innerText = 'Delete';
+          cardBodyDeleteButton.classList.add('btn', 'btn-danger', 'delete-button' , 'd-block'); 
+          cardBodyDeleteButton.innerText = 'Delete';
 
-
+        // Un listener sul button di delete che richiama la funzione deleteData per cancellare il prodotto
         cardBodyDeleteButton.addEventListener('click', () => {
             deleteData(_id);
         });
 
-        divCard.appendChild(cardBodyButton);
+          divCard.appendChild(cardBodyButton);
 
-        divCardBody.appendChild(cardBodyBrand)
-        divCardBody.appendChild(cardBodyTitle);
-        divCardBody.appendChild(cardBodyParagraph);
-        divCardBody.appendChild(cardBodyPrice);
+          divCardBody.appendChild(cardBodyBrand)
+          divCardBody.appendChild(cardBodyTitle);
+          divCardBody.appendChild(cardBodyParagraph);
+          divCardBody.appendChild(cardBodyPrice);
         
-        divCardBody.appendChild(cardBodyEditButton);
-        divCardBody.appendChild(cardBodyDeleteButton);
+          divCardBody.appendChild(cardBodyEditButton);
+          divCardBody.appendChild(cardBodyDeleteButton);
 
-        divCard.appendChild(imgCard);
-        divCard.appendChild(divCardBody);
+          divCard.appendChild(imgCard);
+          divCard.appendChild(divCardBody);
 
-        divCol.appendChild(divCard);
+          divCol.appendChild(divCard);
 
         return divCol;
     });
 
-    // Aggiungi il divCol a homepage
+    // Aggiungo tutti gli elementi di cardElements a homepage
     homepage.append(...cardElements);
-    console.log(cardElements)
+    console.log(cardElements);
 };
 
 // Funzione per eliminare un dato
@@ -132,23 +139,18 @@ async function deleteData(itemId) {
           'Authorization': `Bearer ${authorizationToken}`
         },
       });
-  
-      // Controlla se la risposta è nel range 200-299 (successo)
-      if (response.ok) {
-        console.log('Dato eliminato con successo');
-        // Puoi richiamare la funzione fetchData per aggiornare la visualizzazione dopo l'eliminazione
-        fetchData();
-        location.reload();
-      } else {
-        // Se la risposta non è nel range 200-299, lancia un errore
-        throw new Error(`Errore nella chiamata API: ${response.status} - ${response.statusText}`);
-      }
+
+      // Puoi richiamare la funzione fetchData per aggiornare la visualizzazione dopo l'eliminazione
+      fetchData();
+      
+      // Riaggiorno la pagina
+      location.reload();
+
     } catch (error) {
-      console.error('Errore durante la chiamata API:', error.message);
+      console.error('Errore durante la chiamata API:', error);
+      alert("Errore durante l'eliminazione del dato. Riprova più tardi.");
     }
 }
 
-// Chiamata api al reload della pagina
-window.onload = () => {
-    fetchData();
-};
+// Chiamata api GET al reload della pagina
+window.onload = fetchData();
