@@ -3,6 +3,9 @@ import apiUrl from "/index.js";
 // L'autorization key per accedere all'api
 import { authorizationToken } from "/index.js";
 
+import successAlert from '/utils/alert.js';
+import { failureAlert } from '/utils/alert.js';
+
 // Global variables
 let productTitle = document.getElementById('productTitle');
 let productDesc = document.getElementById('productDesc');
@@ -38,7 +41,8 @@ productTitle.addEventListener('blur', async function (e) {
         // Controlla se il valore dell'input è già presente nei titoli ottenuti dall'API
         if (titoliAPI.includes(valoreInput)) {
             // Se sì, mostra un avviso all'utente
-            alert('Attenzione! Esiste già un prodotto con lo stesso titolo');
+            // alert('Attenzione! Esiste già un prodotto con lo stesso titolo');
+            failureAlert("Error! There's already a product with this name");
         }
     } catch (error) {
         // Gestisce gli errori durante la chiamata API
@@ -96,11 +100,14 @@ async function fetchData() {
         let data = await response.json();
 
         // Ogni volta che aggiungo una card, ho un alert che mi dice che la chiamata POST é andata a buon fine e il nome del prodotto
-        alert('Product created successfully: ' + data.name)
+        // alert('Product created successfully: ' + data.name)
+        successAlert('Product created successfully:' + data.name);
         
-        // Dopo aver aggiunto il prodotto al api mi sposto sulla pagina principale /admin/homepage
-        window.location.href = '/admin/homepage/index.html';
-
+        // Dopo aver aggiunto il prodotto al api mi sposto sulla pagina principale /admin/homepage con un timeout di 1.5seconds
+        setTimeout(() => {
+            window.location.href = '/admin/homepage/index.html';
+        }, 1500);
+        
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
     }

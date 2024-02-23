@@ -3,6 +3,9 @@ import apiUrl from "/index.js";
 // L'autorization key per accedere all'api
 import { authorizationToken } from "/index.js";
 
+import successAlert from '/utils/alert.js';
+import { failureAlert } from '/utils/alert.js';
+
 // Global variables
 let productTitle = document.getElementById('productTitle');
 
@@ -60,9 +63,14 @@ async function patchData(e) {
         let data = await response.json();
         console.log('Dati aggiornati con successo:', data);
 
-        alert('Data updated successfully');
+        // alert('Data updated successfully');
 
-        window.location.href = '/admin/homepage/index.html';
+        successAlert('Product updated successfully');
+
+        setTimeout(() => {
+            window.location.href = '/admin/homepage/index.html';
+        }, 1500);
+        
 
     } catch (error) {
         console.error("Errore durante la chiamata API:", error);
