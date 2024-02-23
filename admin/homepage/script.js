@@ -3,6 +3,9 @@ import apiUrl from "/index.js";
 // L'autorization key per accedere all'api
 import { authorizationToken } from "/index.js";
 
+import successAlert from '/utils/alert.js';
+import { failureAlert } from '/utils/alert.js';
+
 // Variabili globali
 let homepage = document.getElementById('homepage');
 
@@ -104,7 +107,7 @@ let createTemplate = (data) => {
 
         // Un listener sul button di delete che richiama la funzione deleteData per cancellare il prodotto
         cardBodyDeleteButton.addEventListener('click', () => {
-            deleteData(_id);
+            deleteData(_id, name);
         });
 
           divCard.appendChild(cardBodyButton);
@@ -131,7 +134,7 @@ let createTemplate = (data) => {
 };
 
 // Funzione per eliminare un dato
-async function deleteData(itemId) {
+async function deleteData(itemId, name) {
     try {
       const response = await fetch(`${apiUrl}/${itemId}`, {
         method: 'DELETE',
@@ -140,15 +143,23 @@ async function deleteData(itemId) {
         },
       });
 
-      // Puoi richiamare la funzione fetchData per aggiornare la visualizzazione dopo l'eliminazione
-      fetchData();
+      // Ricevo a video un messaggio della riuscita dell'eliminazione del prodotto
+      successAlert("Product: " + name + ", has been successfully deleted");
       
-      // Riaggiorno la pagina
-      location.reload();
+      // Faccio partire un delay 
+      setTimeout(() => {
+        // Puoi richiamare la funzione fetchData per aggiornare la visualizzazione dopo l'eliminazione
+        fetchData();
+      
+        // Riaggiorno la pagina
+        location.reload();
+      }, 2500);
+      
 
     } catch (error) {
       console.error('Errore durante la chiamata API:', error);
-      alert("Errore durante l'eliminazione del dato. Riprova più tardi.");
+      // alert("Errore durante l'eliminazione del dato. Riprova più tardi.");
+      failureAlert("Error while deleting the product. Try again later.");
     }
 }
 
