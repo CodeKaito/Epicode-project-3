@@ -17,6 +17,64 @@ main {
     flex: 1;
 }
 
+.alert-success {
+    background-color: #198754; /* Light red color */
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    color: #fff; /* Text color */
+    font-family: 'Arial', sans-serif; /* Specify the desired font-family */
+    z-index: 999;
+}
+
+.alert-success span {
+    margin-bottom: 10px; /* Adjust spacing between the message and the button */
+}
+
+.alert-success button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff; /* White button background */
+    color: #198754; /* Red button text color */
+    cursor: pointer;
+}
+
+.alert-failed {
+    background-color: #dc3545; /* Light red color */
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 100px ;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    color: #fff; /* Text color */
+    font-family: 'Arial', sans-serif; /* Specify the desired font-family */
+    z-index: 999;
+}
+
+.alert-failed span {
+    margin-bottom: 10px; /* Adjust spacing between the message and the button */
+}
+
+.alert-failed button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #fff; /* White button background */
+    color: #dc3545; /* Red button text color */
+    cursor: pointer;
+}
+
 .card {
     padding: 20px;
     border: 1px solid rgba(0, 0, 0, 0.035);
