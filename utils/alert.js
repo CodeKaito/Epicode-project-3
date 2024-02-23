@@ -1,3 +1,4 @@
+// Creazione della funzione che crea l'alert
 const createAlert = (message, colorClass, timeout=null) => {
     const alert = document.createElement('div');
     const alertButton = document.createElement('button');
@@ -17,6 +18,7 @@ const createAlert = (message, colorClass, timeout=null) => {
     document.body.appendChild(alert);
 }
 
+// Suddivisione dei due alert che avranno come background color verde se success, rosso se failed
 const successAlert = (message, timeout=null) => {
     createAlert(message, 'alert-success', timeout);
 }
@@ -25,5 +27,6 @@ const failureAlert = (message, timeout=null) => {
     createAlert(message, 'alert-failed', timeout);
 }
 
+// Esportazione delle due funzioni per il riuso in altri file js
 export default successAlert;
 export { failureAlert };
