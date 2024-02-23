@@ -4,9 +4,6 @@ import { email, password } from '/index.js';
 import successAlert from '/utils/alert.js';
 import { failureAlert } from '/utils/alert.js';
 
-import successAlert from '/utils/alert.js';
-import { failureAlert } from '/utils/alert.js';
-
 // Ottieni riferimenti agli elementi del DOM
 let emailInput = document.getElementById('emailInput');
 let passwordInput = document.getElementById('passwordInput');
