@@ -253,24 +253,25 @@ let modalCreation = (itemId, itemName) => {
   closeButtonFooter.type = 'button';
   closeButtonFooter.classList.add('btn', 'btn-secondary');
   closeButtonFooter.setAttribute('data-bs-dismiss', 'modal');
-  closeButtonFooter.innerText = 'Close';
-  divFooter.appendChild(closeButtonFooter);
-
+  closeButtonFooter.innerText = 'Discard';
+  
   // Creo il button della conferma
-  let understoodButton = document.createElement('button');
-  understoodButton.type = 'button';
-  understoodButton.classList.add('btn', 'btn-primary');
-  understoodButton.innerText = 'Yes';
-  understoodButton.setAttribute('data-bs-dismiss', 'modal');
+  let deleteButton = document.createElement('button');
+  deleteButton.type = 'button';
+  deleteButton.classList.add('btn', 'btn-primary');
+  deleteButton.innerText = 'Delete';
+  deleteButton.setAttribute('data-bs-dismiss', 'modal');
 
-  understoodButton.addEventListener('click', () => {
+  deleteButton.addEventListener('click', () => {
     deleteData(itemId, itemName);
 
     let modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
     modal.hide();
   });
 
-  divFooter.appendChild(understoodButton);
+  // Aggiungo i due button al divFooter
+  divFooter.appendChild(closeButtonFooter);
+  divFooter.appendChild(deleteButton);
 
   // Inserisco il modale nel html
   document.body.appendChild(divModal);
