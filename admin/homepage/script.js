@@ -106,9 +106,24 @@ let createTemplate = (data) => {
           cardBodyDeleteButton.innerText = 'Delete';
 
         // Un listener sul button di delete che richiama la funzione deleteData per cancellare il prodotto
+        // cardBodyDeleteButton.addEventListener('click', () => {
+        //     deleteData(_id, name);
+        // });
+
         cardBodyDeleteButton.addEventListener('click', () => {
-            deleteData(_id, name);
-        });
+          // Richiamo la funzione della creazione del modale
+          modalCreation(_id, name);
+          
+          // Customizzo la descrizione della funzione per comparire il nome del prodotto
+          let modalBody = document.querySelector('#staticBackdrop .modal-body');
+          modalBody.innerHTML = `<p>Are you sure you want to delete the product <strong>${name}<strong>?</p>`;
+
+          let modalTitle = document.querySelector('#staticBackdropLabel');
+          modalTitle.innerText = 'Delete Confirmation';
+
+          let modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+          modal.show();
+      });
 
           divCard.appendChild(cardBodyButton);
 
@@ -162,6 +177,104 @@ async function deleteData(itemId, name) {
       failureAlert("Error while deleting the product. Try again later.");
     }
 }
+
+// Modal creation
+// <!-- Button trigger modal -->
+// <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+//   Launch static backdrop modal
+// </button>
+
+// <!-- Modal -->
+// <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+//   <div class="modal-dialog">
+//     <div class="modal-content">
+//       <div class="modal-header">
+//         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+//         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//       </div>
+//       <div class="modal-body">
+//         ...
+//       </div>
+//       <div class="modal-footer">
+//         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+//         <button type="button" class="btn btn-primary">Understood</button>
+//       </div>
+//     </div>
+//   </div>
+// </div>
+
+let modalCreation = (itemId, itemName) => {
+
+  let divModal = document.createElement('div');
+  divModal.classList.add('modal', 'fade');
+  divModal.id = 'staticBackdrop';
+  divModal.setAttribute('data-bs-backdrop', 'static');
+  divModal.setAttribute('data-bs-keyboard', 'false');
+  divModal.setAttribute('tabindex', '-1');
+  divModal.setAttribute('aria-labelledby', 'staticBackdropLabel');
+  divModal.setAttribute('aria-hidden', 'true');
+
+  let divDialog = document.createElement('div');
+  divDialog.classList.add('modal-dialog');
+  divModal.appendChild(divDialog);
+
+  let divContent = document.createElement('div');
+  divContent.classList.add('modal-content');
+  divDialog.appendChild(divContent);
+
+  let divHeader = document.createElement('div');
+  divHeader.classList.add('modal-header');
+  divContent.appendChild(divHeader);
+
+  let modalTitle = document.createElement('h1');
+  modalTitle.classList.add('modal-title', 'fs-5');
+  modalTitle.id = 'staticBackdropLabel';
+  modalTitle.innerText = 'Modal title';
+  divHeader.appendChild(modalTitle);
+
+  let closeButton = document.createElement('button');
+  closeButton.type = 'button';
+  closeButton.classList.add('btn-close');
+  closeButton.setAttribute('data-bs-dismiss', 'modal');
+  closeButton.setAttribute('aria-label', 'Close');
+  divHeader.appendChild(closeButton);
+
+  let divBody = document.createElement('div');
+  divBody.classList.add('modal-body');
+
+  divContent.appendChild(divBody);
+  
+  let divFooter = document.createElement('div');
+  divFooter.classList.add('modal-footer');
+  divContent.appendChild(divFooter);
+
+  // Creo il button della chiusura del modale
+  let closeButtonFooter = document.createElement('button');
+  closeButtonFooter.type = 'button';
+  closeButtonFooter.classList.add('btn', 'btn-secondary');
+  closeButtonFooter.setAttribute('data-bs-dismiss', 'modal');
+  closeButtonFooter.innerText = 'Close';
+  divFooter.appendChild(closeButtonFooter);
+
+  // Creo il button della conferma
+  let understoodButton = document.createElement('button');
+  understoodButton.type = 'button';
+  understoodButton.classList.add('btn', 'btn-primary');
+  understoodButton.innerText = 'Yes';
+  understoodButton.setAttribute('data-bs-dismiss', 'modal');
+
+  understoodButton.addEventListener('click', () => {
+    deleteData(itemId, itemName);
+
+    let modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+    modal.hide();
+  });
+
+  divFooter.appendChild(understoodButton);
+
+  // Inserisco il modale nel html
+  document.body.appendChild(divModal);
+};
 
 // Chiamata api GET al reload della pagina
 window.onload = fetchData();

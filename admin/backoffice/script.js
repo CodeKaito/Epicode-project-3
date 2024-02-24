@@ -101,7 +101,7 @@ async function fetchData() {
 
         // Ogni volta che aggiungo una card, ho un alert che mi dice che la chiamata POST é andata a buon fine e il nome del prodotto
         // alert('Product created successfully: ' + data.name)
-        successAlert('Product created successfully:' + data.name);
+        successAlert('Product created successfully: ' + data.name);
         
         // Dopo aver aggiunto il prodotto al api mi sposto sulla pagina principale /admin/homepage con un timeout di 1.5seconds
         setTimeout(() => {
@@ -109,7 +109,7 @@ async function fetchData() {
         }, 1500);
         
     } catch (error) {
-        console.error("Errore durante la chiamata API:", error);
+        console.error("Errore durante la chiamata API: ", error);
     }
 }
 
