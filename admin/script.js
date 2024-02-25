@@ -26,11 +26,11 @@ signIn.addEventListener('click', () => {
 // Funzione per autenticare l'utente
 function authenticateUser() {
     // Ottieni i valori inseriti dall'utente nelle caselle di input email e password
-    let userEmail = emailInput.value;
+    let userEmail = emailInput.value.toLowerCase(); // Lowercase email per evitare errori di battitura
     let userPassword = passwordInput.value;
 
-    // Confronta i valori inseriti con le credenziali memorizzate nel modulo /index.js
-    if (userEmail === email && userPassword === password) {
+    // Confronta i valori inseriti con le credenziali memorizzate nel modulo /index.js con la mail to lowercase per evitare errori
+    if (userEmail === email.toLowerCase() && userPassword === password) {
         // Se le credenziali sono corrette, logga l'autenticazione e reindirizza alla console di amministrazione
         console.log("Authentication successful");
         // alert("Authentication successful, redirect to admin console.");
